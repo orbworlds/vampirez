@@ -1,23 +1,19 @@
 # Contributing to VampireZ
 
-This repository is where VampireZ is made, and pull requests are welcome: bug fixes, balance, new
-maps and modes, things for phones. Merged here, a change is live on [Orb](https://orbworlds.com/orb/vampirez?utm_source=github&utm_medium=readme&utm_campaign=vampirez) for
-everyone within about a quarter of an hour.
+Thanks for wanting to help. Bug fixes, new things to do and ideas are all welcome as pull requests.
+Merged changes go live on [Orb](https://orbworlds.com/orb/vampirez?utm_source=github&utm_medium=readme&utm_campaign=vampirez) within about 15 minutes.
 
-- **Try it first.** `npm start` runs the game at http://127.0.0.1:4242 with Orb's runtime; open a
-  second tab (or press **+ Player**) to test multiplayer. Check phones too: the game plays by touch,
-  and your browser's device mode is a good start.
-- **Test it.** `npm install` once, then `npm test` plays the whole game in a headless browser
-  through its `?debug` hooks (`npm run test:quick` for a shorter run). Every pull request runs it
-  too. Something new deserves a check in `test/play.mjs`.
-- **One file.** The game is `index.html`. Keep it that way: no build step, no new dependencies
-  (libraries come from a CDN at a pinned version, like three.js).
-- **Guard `window.orb`.** It only exists on Orb and in the kit: `orb?.store`, never `orb.store`
-  alone, so the file still runs on its own.
-- **Fair play.** Things in the wardrobe (`orb.shop`) are looks and fun extras, never an advantage.
-  Please keep it that way, and keep prices and the shop list as they are unless an issue agreed otherwise.
-- **Orb's files.** `orb-kit/`, `test/pw.mjs`, `package.json`, `docs/cover.webp` and
-  `.github/workflows/test.yml` come from Orb and are updated by Orb's bot: suggest changes in an issue.
+Before you open one:
 
-Don't want to write code? [Remix it on Orb](https://orbworlds.com/orb/vampirez?remix&utm_source=github&utm_medium=readme&utm_campaign=vampirez) and describe your change
-instead; if it's great, open an issue with the link.
+- **Try it.** `npm start` runs it locally with Orb's runtime. Open a second tab to check anything
+  multiplayer, and have a look on a phone too (your browser's device mode is a good start).
+- **Run the tests.** `npm install` once, then `npm test`. It plays through the game in a headless browser using its `?debug` hooks (`npm run test:quick` is shorter). If you add something new, add a check for it in `test/play.mjs`. Every pull request runs it as well.
+- **One file.** The game is `index.html`, and it should stay that way: no build step, no new dependencies. Libraries come from a CDN at a pinned version, like three.js.
+- **Leave `window.orb` optional.** It only exists on Orb and in the kit, so write `orb?.store` and
+  not `orb.store`, and the game still works when opened on its own.
+- **Fair play.** What the wardrobe (`orb.shop`) sells is for looks and fun, never an advantage. Please keep it that way, and leave prices and the item list alone unless an issue agreed on a change.
+- **Orb's files.** `orb-kit/`, `test/pw.mjs`, `package.json`, `docs/cover.webp`, `docs/screenshots/` and `.github/workflows/test.yml`
+  are kept up to date by Orb's bot. If one needs changing, open an issue.
+
+Not a coder? [Remix it on Orb](https://orbworlds.com/orb/vampirez?remix&utm_source=github&utm_medium=readme&utm_campaign=vampirez) and describe your idea instead. If it turns
+out well, open an issue with the link.

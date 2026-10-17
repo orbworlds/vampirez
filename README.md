@@ -1,81 +1,63 @@
-<p align="center">
-  <a href="https://orbworlds.com/orb/vampirez?utm_source=github&utm_medium=readme&utm_campaign=vampirez"><img src="docs/cover.webp" alt="VampireZ" width="720"></a>
+# VampireZ
+
+<a href="https://orbworlds.com/orb/vampirez?utm_source=github&utm_medium=readme&utm_campaign=vampirez"><img src="docs/screenshots/1.webp" alt="VampireZ" width="100%"></a>
+
+The survivors have to make it to dawn. Zombies come in waves, and a few players start the night as vampires hunting everyone else. Whoever a vampire kills joins them, so there are fewer survivors as the night goes on.
+
+There are two maps: a blocky village, and Frosthaven, a frozen harbour with a ghost ship stuck in the ice. Between nights you're in Ravencross, a town with quests, coffins to open, a daily reward and the Lantern Run.
+
+**[Play it on Orb](https://orbworlds.com/orb/vampirez?utm_source=github&utm_medium=readme&utm_campaign=vampirez)**. It runs in the browser on a computer, phone or tablet, and you
+don't need an account.
+
+<p>
+  <img src="docs/screenshots/2.webp" alt="VampireZ" width="49%">
+  <img src="docs/screenshots/3.webp" alt="VampireZ" width="49%">
 </p>
 
-<h1 align="center">VampireZ</h1>
+## Controls
 
-<p align="center">Survive one night against zombie waves and the vampires hunting you, in one HTML file. Get bitten and you join them.</p>
+WASD to move, mouse to look, click to attack, right click for the bow (or a bat dash as a vampire), Shift to run, Space to jump, E for doors and keepers, B for the shop. As a vampire, F turns you into a bat and Q screeches. On a phone or tablet it plays by touch.
 
-<p align="center">
-  <a href="https://orbworlds.com/orb/vampirez?utm_source=github&utm_medium=readme&utm_campaign=vampirez"><img src="docs/play-on-orb.svg" alt="Play on Orb" height="40"></a>
-  &nbsp;
-  <a href="https://orbworlds.com/orb/vampirez?remix&utm_source=github&utm_medium=readme&utm_campaign=vampirez"><img src="docs/remix-on-orb.svg" alt="Remix on Orb" height="40"></a>
-</p>
-
-<p align="center"><b><a href="https://orbworlds.com/orb/vampirez?utm_source=github&utm_medium=readme&utm_campaign=vampirez">Play it now</a></b>: free, in your browser, on any device. No download, no account.</p>
-
----
-
-Survive one night in a blocky village or in Frosthaven, a frozen harbour where a ghost ship lies locked in the ice: fight zombie waves, gear up and hold off the vampires until dawn. Get bitten and you join them. Between nights, walk Ravencross: quests, coffins, a daily reward, a monthly Blood Pass.
-
-- **Two maps**: a blocky village, and Frosthaven, a frozen harbour with a ghost ship locked in the ice.
-- Fight zombie waves, gear up and hold out **until dawn**, or hunt the survivors as a vampire.
-- **Ravencross** between nights: quests, coffins, a daily reward and the Lantern Run.
-- A monthly **Blood Pass**; capes, hats, outfits, kill effects, nameplates and titles in the wardrobe.
-
-**Controls:** WASD to move, mouse to look, click to attack, right-click for the bow (or a bat dash), Shift to run, Space to jump, E for doors and keepers, B for the shop; as a vampire, F for bat form and Q to screech. Phones and tablets play by touch.
-
-## Remix it
-
-Every game on [Orb](https://orbworlds.com/?utm_source=github&utm_medium=readme&utm_campaign=vampirez) can be remixed, and this one is no exception. Two ways:
-
-**By talking.** Open [VampireZ on Orb](https://orbworlds.com/orb/vampirez?remix&utm_source=github&utm_medium=readme&utm_campaign=vampirez), tap **Make my own copy**, and say what to
-change: "make the nights longer", "add a dragon boss", "turn it into a pirate game". Orb's AI
-builds it while you watch, and your version gets its own link to share.
-
-**In code.** Fork this repository and play it on your machine:
+## Run it yourself
 
 ```bash
-git clone https://github.com/<you>/vampirez && cd vampirez
-npm start            # http://127.0.0.1:4242 (Node 20+, nothing to install)
+git clone https://github.com/orbworlds/vampirez
+cd vampirez
+npm start
 ```
 
-Open a second tab, or press **+ Player**, and you are two players in the same game. Edit
-`index.html` and the page reloads. When you have pushed your changes, `npm run share` prints a
-link that opens your version on Orb, as a world of your own, credited as a remix of VampireZ.
+That opens it at http://127.0.0.1:4242 with the [Orb kit](https://github.com/orbworlds/kit),
+which gives the game what it gets on Orb: other players (open a second tab, or press **+ Player**), saves, shared state and the shop, which charges nothing locally.
+You need Node 20 or newer, and nothing else.
 
-Made it better? Open a pull request: once it's merged here, it's live on Orb for everyone within
-about a quarter of an hour.
+The whole thing is `index.html`, 9,386 lines of HTML, CSS and JavaScript with
+[three.js](https://threejs.org) from a CDN. Edit it and the page reloads.
 
-## How it's made
+What it uses from Orb's world SDK (`window.orb`, typed in [`orb-kit/orb.d.ts`](orb-kit/orb.d.ts)):
 
-The whole game is one file: `index.html`, 9,386 lines (767 KB) of HTML, CSS and
-JavaScript, with [three.js](https://threejs.org) from a CDN. No build step, no dependencies.
-It runs as an Orb world, using Orb's world SDK (`window.orb`, typed in
-[`orb-kit/orb.d.ts`](orb-kit/orb.d.ts)):
+- `orb.room` for multiplayer (who is here, what they are doing, messages between players)
+- `orb.room.invite` for invite links that open the same room
+- `orb.store` for things everyone shares, like scores
+- `orb.shop` for the wardrobe, where looks are bought with Orb credits (the money from paid credits goes to the world’s maker)
+- plain `localStorage` for progress, which Orb saves per player and brings along to their other devices
 
-- **Multiplayer** with `orb.room`: who is here, their state, messages
-- **Invite links** with `orb.room.invite`, opening the game in the same room
-- **Shared state** with `orb.store`: leaderboards and what everyone shares
-- **A wardrobe** with `orb.shop`: looks bought with Orb credits (on Orb, what paid credits buy goes to the world’s maker)
-- **Progress** in plain `localStorage`, which Orb saves per player and carries to their other devices
+Outside Orb and the kit, `window.orb` isn't there and the game carries on without it.
 
-Outside Orb, `window.orb` doesn't exist, and the game still runs on its own: open `index.html`
-in a browser for a single-player game. `npm start` runs it with the
-[Orb kit](https://github.com/orbworlds/kit) instead, which gives it everything above on localhost.
+## Make your own version
+
+You can remix it on Orb without touching code: [open it there](https://orbworlds.com/orb/vampirez?remix&utm_source=github&utm_medium=readme&utm_campaign=vampirez), choose
+**Make my own copy** and describe what you'd change. Orb's AI makes the changes in your copy.
+
+Or fork this repository, make your changes and push them. `npm run share` then prints a link that
+brings your fork into Orb as a world of your own, credited as a remix of this one, and it stays in
+sync with your fork from then on.
 
 ## Contributing
 
-This repository is where VampireZ is made: fixes, new content and ideas are welcome as pull requests
-(see [CONTRIBUTING.md](CONTRIBUTING.md)). Every pull request runs the game's browser tests; merged,
-it goes live on Orb by itself.
+Pull requests are welcome. GitHub checks each one by playing through the game in a headless browser,
+and once a change is merged it's live on Orb within about 15 minutes. [CONTRIBUTING.md](CONTRIBUTING.md)
+has the details.
 
 ## License
 
-The code is [MIT](LICENSE). It embeds the [Pixelify Sans](https://fonts.google.com/specimen/Pixelify+Sans)
-font (SIL Open Font License 1.1, The Pixelify Sans Project Authors). The Orb name and logo aren't
-covered by the license.
-
----
-
-<p align="center">Made with <a href="https://orbworlds.com/?utm_source=github&utm_medium=readme&utm_campaign=vampirez"><b>Orb</b></a>: make games and worlds by talking, play them with friends, remix anyone's.</p>
+MIT, see [LICENSE](LICENSE). The page embeds the [Pixelify Sans](https://fonts.google.com/specimen/Pixelify+Sans) font, under the SIL Open Font License 1.1. The Orb name and logo aren't covered by the license.
