@@ -1,0 +1,21 @@
+{
+  "name": "vampirez",
+  "private": true,
+  "description": "Survive one night against zombie waves and the vampires hunting you, in one HTML file. Get bitten and you join them.",
+  "type": "module",
+  "license": "MIT",
+  "homepage": "https://orbworlds.com/orb/vampirez",
+  "scripts": {
+    "start": "node orb-kit/bin/orb.mjs dev .",
+    "share": "node orb-kit/bin/orb.mjs share",
+    "test": "node test/play.mjs",
+    "test:quick": "node test/play.mjs --quick"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0",
+    "three": "^0.186.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
