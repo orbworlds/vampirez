@@ -1,4 +1,4 @@
-# The game's browser suite (test/play.mjs) on every pull request and push. Made by Orb.
+# The world's tests (npm test) on every pull request and push. Made by Orb.
 name: Test
 
 on:
@@ -19,4 +19,5 @@ jobs:
         with:
           node-version: 22
       - run: npm install --no-audit --no-fund
+      - run: npm ls playwright >/dev/null 2>&1 || npm install --no-save --no-audit --no-fund playwright@^1.63.0
       - run: npm test

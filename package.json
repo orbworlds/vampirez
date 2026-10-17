@@ -1,7 +1,7 @@
 {
   "name": "vampirez",
   "private": true,
-  "description": "Survive one night against zombie waves and the vampires hunting you, in one HTML file. Get bitten and you join them.",
+  "description": "Survive one night against zombies and the vampires hunting you. Get bitten and you become one of them.",
   "type": "module",
   "license": "MIT",
   "homepage": "https://orbworlds.com/orb/vampirez",
