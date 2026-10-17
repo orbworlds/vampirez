@@ -6,12 +6,13 @@
   "license": "MIT",
   "homepage": "https://orbworlds.com/orb/vampirez",
   "scripts": {
-    "start": "node orb-kit/bin/orb.mjs dev .",
-    "share": "node orb-kit/bin/orb.mjs share",
+    "start": "orb dev",
+    "share": "orb share",
     "test": "node test/play.mjs",
     "test:quick": "node test/play.mjs --quick"
   },
   "devDependencies": {
+    "orb-kit": "https://orbworlds.com/kit.tgz",
     "playwright": "^1.63.0",
     "three": "^0.186.1"
   },

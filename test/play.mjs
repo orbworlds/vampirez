@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// VampireZ (public/templates/vampirez.html) in a headless browser, through its ?debug hooks (window.__vz): Ravencross,
+// VampireZ (index.html) in a headless browser, through its ?debug hooks (window.__vz): Ravencross,
 // the lobby, boots with its keepers, each keeper opens what they keep (by E and by a click), every panel draws, and
 // progression pays out (the daily reward, quests, achievements, the Blood Pass and Blood Pass+, coffins, credit looks,
 // the Lantern Run). A night is played from the Night Gate to dawn and back; kill effects show; two players see each
@@ -7,17 +7,15 @@
 // windows, orb.store shared through this process). Then phones and tablets: a phone walks Ravencross and plays by touch,
 // and in every size (and Safari's engine, WebKit, where it's installed) everything fits and takes a tap.
 //
-//   node scripts/test-vampirez.mjs [--quick: no two-player night] [--phones: only the phones and tablets]
+//   node test/play.mjs [--quick: no two-player night] [--phones: only the phones and tablets]
 import { webkit, devices } from 'playwright';
-import { launch, routeCdn } from './pw.mjs';
+import { launch, routeCdn } from 'orb-kit/browser';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-// The game: index.html at the top of its own repository (where this suite is test/play.mjs), or
-// Orb's copy of it (public/templates/vampirez.html, this suite being scripts/test-vampirez.mjs).
-const GAME = ['index.html', 'public/templates/vampirez.html'].map((f) => path.join(root, f)).find((f) => fs.existsSync(f));
+const GAME = path.join(root, 'index.html');
 const URL = 'file://' + GAME + '?debug';
 const quick = process.argv.includes('--quick'), phonesOnly = process.argv.includes('--phones');
 let failures = 0;
