@@ -12,7 +12,7 @@
     "test:quick": "node test/play.mjs --quick"
   },
   "devDependencies": {
-    "orb-kit": "https://orbworlds.com/kit.tgz",
+    "@orbworlds/kit": "^0.3.0",
     "playwright": "^1.63.0",
     "three": "^0.186.1"
   },

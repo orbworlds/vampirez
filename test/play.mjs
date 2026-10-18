@@ -9,7 +9,7 @@
 //
 //   node test/play.mjs [--quick: no two-player night] [--phones: only the phones and tablets]
 import { webkit, devices } from 'playwright';
-import { launch, routeCdn } from 'orb-kit/browser';
+import { launch, routeCdn } from '@orbworlds/kit/browser';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';

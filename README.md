@@ -27,14 +27,14 @@ npm install
 npm start
 ```
 
-That opens it at http://127.0.0.1:4242 with the Orb kit, which `npm install` brings,
-and which gives the game what it gets on Orb: other players (open a second tab, or press **+ Player**), saves, shared state and the shop, which charges nothing locally.
+That opens it at http://127.0.0.1:4242 with the [Orb kit](https://www.npmjs.com/package/@orbworlds/kit), which `npm install`
+brings and which gives the game what it gets on Orb: other players (open a second tab, or press **+ Player**), saves, shared state and the shop, which charges nothing locally.
 You need Node 20 or newer.
 
 The whole thing is `index.html`, 9,386 lines of HTML, CSS and JavaScript with
 [three.js](https://threejs.org) from a CDN. Edit it and the page reloads.
 
-What it uses from Orb's world SDK (`window.orb`, typed in [`orb.d.ts`](https://orbworlds.com/kit/orb.d.ts)):
+What it uses from Orb's world SDK (`window.orb`, typed in `@orbworlds/kit/orb.d.ts`):
 
 - `orb.room` for multiplayer (who is here, what they are doing, messages between players)
 - `orb.room.invite` for invite links that open the same room
